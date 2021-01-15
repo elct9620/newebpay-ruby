@@ -3,7 +3,11 @@
 require 'spec_helper'
 
 RSpec.describe Newebpay::Cipher do
+  let(:config) { Newebpay::Config.new }
+
   before do
+    allow(Newebpay::Config).to receive(:current).and_return(config)
+
     Newebpay::Config.config do |c|
       c.hash_key = 'A' * 32
       c.hash_iv = 'A' * 16
