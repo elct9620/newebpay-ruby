@@ -2,6 +2,7 @@
 
 require 'newebpay/version'
 require 'newebpay/config'
+require 'newebpay/cipher'
 
 module Newebpay
   class Error < StandardError; end

@@ -27,7 +27,7 @@ module Newebpay
     #
     # @since 0.1.0
     def config(&block)
-      instance_exec(&block)
+      instance_exec(self, &block)
     end
   end
 end
