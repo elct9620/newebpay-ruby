@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    NewebPay (0.1.0)
+    newebpay (0.1.0)
       offsite_payments (>= 2.7.26)
 
 GEM
@@ -124,9 +124,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  NewebPay!
   bundler-audit
   money
+  newebpay!
   overcommit
   rake (~> 12.0)
   rspec (~> 3.0)

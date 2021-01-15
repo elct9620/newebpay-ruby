@@ -3,7 +3,7 @@
 require_relative 'lib/newebpay/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'NewebPay'
+  spec.name          = 'newebpay'
   spec.version       = Newebpay::VERSION
   spec.authors       = ['Aotokitsuruya']
   spec.email         = ['contact@frost.tw']
