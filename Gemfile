@@ -14,3 +14,5 @@ gem 'rubocop-rspec'
 
 gem 'bundler-audit'
 gem 'overcommit'
+
+gem 'money'
