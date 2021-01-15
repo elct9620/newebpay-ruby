@@ -2,6 +2,12 @@
 
 require 'bundler/setup'
 require 'money'
+require 'simplecov'
+
+SimpleCov.start do
+  load_profile 'test_frameworks'
+end
+
 require 'newebpay'
 
 RSpec.configure do |config|
