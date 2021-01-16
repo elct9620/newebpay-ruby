@@ -7,6 +7,7 @@ Gem::Specification.new do |spec|
   spec.version       = Newebpay::VERSION
   spec.authors       = ['Aotokitsuruya']
   spec.email         = ['contact@frost.tw']
+  spec.licenses      = ['Apache 2.0']
 
   spec.summary       = 'The offsite payments implemented for NewebPay'
   spec.description   = 'The offsite payments implemented for NewebPay'
