@@ -14,9 +14,15 @@ RSpec.describe Newebpay::Cipher do
     end
   end
 
+  describe '.decrypt' do
+    subject { described_class.decrypt('5d54df78166ea169cb090290bbca628a1231d591bcda0ca23719c2d468505afd') }
+
+    it { is_expected.to include('dummy') }
+  end
+
   describe '.encrypt' do
     subject { described_class.encrypt('dummy') }
 
-    it { is_expected.to eq('5d54df78166ea169cb090290bbca628a1231d591bcda0ca23719c2d468505afd') }
+    it { is_expected.to eq('bc239beef860243040f2e0174cd490b7') }
   end
 end

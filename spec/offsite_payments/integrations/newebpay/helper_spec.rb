@@ -35,13 +35,13 @@ RSpec.describe OffsitePayments::Integrations::Newebpay::Helper do
   end
 
   describe '#trade_info' do
-    subject(:trade_info) { pp helper.trade_info }
+    subject(:trade_info) { helper.trade_info }
 
     it do
       expect(trade_info).to eq(
-        'ba096233a931922f34e7273b1e7e81ba7379e4c9ffb1143437349a5a1302b21966f76902fae646bdf98ff' \
-        'd15ee7066e9ffe9a3e3c090fdaef6f59fb059ef2af3af7147a89eec0e11eb5853a55cdc89e87bd07622ff' \
-        '0e048d2b321fd0cc08336a7811e2f597654ebcd5f1e8f9eed16b5efbe076b4b593f46dce24d0e87d10ae45'
+        'ba096233a931922f34e7273b1e7e81ba7379e4c9ffb1143437349a5a1302b21966f76902fae646bdf98ffd' \
+        '15ee7066e9ffe9a3e3c090fdaef6f59fb059ef2af3af7147a89eec0e11eb5853a55cdc89e87bd07622ff0e' \
+        '048d2b321fd0cc08336a1cdd959f5d72d5d029360c03e2f8467a'
       )
     end
   end
@@ -49,6 +49,6 @@ RSpec.describe OffsitePayments::Integrations::Newebpay::Helper do
   describe '#trade_sha' do
     subject { helper.trade_sha }
 
-    it { is_expected.to eq('4EC6DAEBCFD4F33E4DE55C6819EB79DD691B732CB96DA477506BC38B4FAF2B3A') }
+    it { is_expected.to eq('C60B8AB01C76857E29A977E35115C8AC76EF1328391B59C81FC5F0EDC42C3481') }
   end
 end
