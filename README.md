@@ -1,6 +1,8 @@
 NewebPay
 ===
 
+[![Build Status](https://travis-ci.com/elct9620/newebpay-ruby.svg?branch=main)](https://travis-ci.com/elct9620/newebpay-ruby)
+
 The [Offsite Payments](https://github.com/activemerchant/offsite_payments) implement for NewebPay（藍新金流）
 
 ## Installation
