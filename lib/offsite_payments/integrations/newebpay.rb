@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 require 'offsite_payments'
-require 'offsite_payments/integrations/newebpay/helper'
-
 module OffsitePayments
   module Integrations
     # NewebPay Integrations
@@ -17,6 +15,11 @@ module OffsitePayments
       mattr_accessor :live_url
       self.live_url = 'https://core.newebpay.com/MPG/mpg_gateway'
 
+      # Current service URL
+      #
+      # @return [String]
+      #
+      # @since 0.1.0
       def self.service_url
         case OffsitePayments.mode
         when :production then live_url
@@ -25,6 +28,9 @@ module OffsitePayments
           raise StandardError, "Integration mode set to an invalid value: #{OffsitePayments.mode}"
         end
       end
+
+      require 'offsite_payments/integrations/newebpay/helper'
+      require 'offsite_payments/integrations/newebpay/return'
     end
   end
 end
