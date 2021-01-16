@@ -29,8 +29,10 @@ module OffsitePayments
         end
       end
 
+      require 'offsite_payments/integrations/newebpay/concern/has_trade_info'
       require 'offsite_payments/integrations/newebpay/helper'
       require 'offsite_payments/integrations/newebpay/return'
+      require 'offsite_payments/integrations/newebpay/notification'
     end
   end
 end

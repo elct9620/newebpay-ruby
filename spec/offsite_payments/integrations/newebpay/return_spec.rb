@@ -22,7 +22,18 @@ RSpec.describe OffsitePayments::Integrations::Newebpay::Return do
   let(:result) { described_class.new(query_string) }
   let(:config) { Newebpay::Config.new }
 
-  shared_examples 'boolean check' do
+  before do
+    allow(Newebpay::Config).to receive(:current).and_return(config)
+
+    Newebpay::Config.config do |c|
+      c.hash_key = 'A' * 32
+      c.hash_iv = 'A' * 16
+    end
+  end
+
+  describe '#success?' do
+    subject { result.success? }
+
     it { is_expected.to be_truthy }
 
     context 'when hash_key invalid' do
@@ -34,52 +45,11 @@ RSpec.describe OffsitePayments::Integrations::Newebpay::Return do
     end
   end
 
-  before do
-    allow(Newebpay::Config).to receive(:current).and_return(config)
-
-    Newebpay::Config.config do |c|
-      c.hash_key = 'A' * 32
-      c.hash_iv = 'A' * 16
-    end
-  end
-
-  describe '#checksum' do
-    subject { result.checksum }
-
-    it { is_expected.to eq('6EF2CB8B032D6BBEC84A8A374DA4068C5746620EA0407F7F19E3FA84D14AD533') }
-  end
-
-  describe '#valid?' do
-    subject { result.valid? }
-
-    it_behaves_like 'boolean check'
-  end
-
-  describe '#success?' do
-    subject { result.success? }
-
-    it_behaves_like 'boolean check'
-  end
-
   describe '#message' do
     subject { result.message }
 
     it { is_expected.to eq('授權成功') }
   end
 
-  describe '#trade_info' do
-    subject { result.trade_info }
-
-    it { is_expected.to have_key('Status') }
-    it { is_expected.to have_key('Message') }
-    it { is_expected.to have_key('Result') }
-
-    context 'when decrypt failed' do
-      before { config.hash_key = 'B' * 32 }
-
-      after { config.hash_key = 'A' * 32 }
-
-      it { is_expected.to be_empty }
-    end
-  end
+  it_behaves_like 'has trade info', '6EF2CB8B032D6BBEC84A8A374DA4068C5746620EA0407F7F19E3FA84D14AD533'
 end
