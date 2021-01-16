@@ -76,6 +76,9 @@ In you controller
 ## Roadmap
 
 * [x] MPG Support
+* [ ] Refund API
+* [ ] Unauthorized API
+* [ ] Order Status API
 * [ ] Rails Support
   * [ ] Form Object
   * [ ] Form Helper
