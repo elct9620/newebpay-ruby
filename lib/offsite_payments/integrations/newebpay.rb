@@ -33,6 +33,37 @@ module OffsitePayments
       require 'offsite_payments/integrations/newebpay/helper'
       require 'offsite_payments/integrations/newebpay/return'
       require 'offsite_payments/integrations/newebpay/notification'
+
+      # Alias to create helper
+      #
+      # @param [String] order ID
+      # @param [String] merchant ID
+      # @param [Hash] options
+      #
+      # @since 0.1.0
+      def self.helper(order, merchant, options = {})
+        OffsitePayments::Integrations::Newebpay::Helper.new(order, merchant, options)
+      end
+
+      # Alias to create return object
+      #
+      # @param [String] query string
+      # @param [Hash] options
+      #
+      # @since 0.1.0
+      def self.return(query_string, options = {})
+        OffsitePayments::Integrations::Newebpay::Return.new(query_string, options)
+      end
+
+      # Alias to create notification object
+      #
+      # @param [String] query string
+      # @param [Hash] options
+      #
+      # @since 0.1.0
+      def self.notification(query_string, options = {})
+        OffsitePayments::Integrations::Newebpay::Notification.new(query_string, options)
+      end
     end
   end
 end

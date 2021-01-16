@@ -33,7 +33,7 @@ options = {
   notify_url: newebpay_notify_url
 }
 
-@helper = OffsitePayments.integration('newebpay')::Helper.new(order_id, merchant_id, options)
+@helper = OffsitePayments.integration('newebpay').helper(order_id, merchant_id, options)
 ```
 
 In your view
@@ -56,7 +56,7 @@ In your view
 In your controller
 
 ```ruby
-@return = OffsitePayments.integration('newebpay')::Return.new(request.body.read)
+@return = OffsitePayments.integration('newebpay').return(request.body.read)
 @return.trade_info # The decrypted TradeInfo from NewebPay
 ```
 
@@ -67,7 +67,7 @@ In your controller
 In you controller
 
 ```ruby
-@notification = OffsitePayments.integration('newebpay')::Notification.new(request.body.read)
+@notification = OffsitePayments.integration('newebpay').notification(request.body.read)
 @notification.trade_info # The decrypted TradeInfo from NewebPay
 ```
 
