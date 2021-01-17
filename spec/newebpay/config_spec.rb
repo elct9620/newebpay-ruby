@@ -11,6 +11,12 @@ RSpec.describe Newebpay::Config do
     it { is_expected.to be_a(described_class) }
   end
 
+  describe '.switch' do
+    let(:another_config) { described_class.new }
+
+    it { expect { |block| described_class.switch(another_config, &block) }.to yield_with_args(another_config) }
+  end
+
   describe '#config' do
     subject(:when_config) { config.config {} }
 

@@ -18,5 +18,15 @@ module Newebpay
     extend Forwardable
 
     delegate %i[service_url helper return notification] => OffsitePayments::Integrations::Newebpay
+
+    # Use specify config
+    #
+    # @param [Newebpay::Config] the config to switch
+    # @param [Proc] the block to use temporary config
+    #
+    # @since 0.2.0
+    def use(config, &block)
+      Config.switch(config, &block)
+    end
   end
 end
