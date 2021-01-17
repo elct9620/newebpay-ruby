@@ -23,6 +23,20 @@ Or install it yourself as:
 
 ## Usage
 
+### Configure Newebpay
+
+```ruby
+# config/initializes/newebpay.rb
+
+# Set to test mode if under development
+OffsitePayments.mode = :test
+
+Newebpay::Config.config do |c|
+  c.hash_key = ''
+  c.hash_iv = ''
+end
+```
+
 ### Create payment button
 
 In your controller
@@ -35,8 +49,10 @@ options = {
   notify_url: newebpay_notify_url
 }
 
-@helper = OffsitePayments.integration('newebpay').helper(order_id, merchant_id, options)
+@helper = Newebpay.helper(order_id, merchant_id, options)
 ```
+
+> The `Newebpay.helper` is an alias to `OffsitePayment::Integrations::Newebpay::Helper.new`
 
 In your view
 
@@ -58,7 +74,7 @@ In your view
 In your controller
 
 ```ruby
-@return = OffsitePayments.integration('newebpay').return(request.body.read)
+@return = Newebpay.return(request.body.read)
 @return.trade_info # The decrypted TradeInfo from NewebPay
 ```
 
@@ -69,7 +85,7 @@ In your controller
 In you controller
 
 ```ruby
-@notification = OffsitePayments.integration('newebpay').notification(request.body.read)
+@notification = Newebpay.notification(request.body.read)
 @notification.trade_info # The decrypted TradeInfo from NewebPay
 ```
 
