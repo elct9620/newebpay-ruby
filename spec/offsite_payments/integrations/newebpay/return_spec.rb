@@ -3,6 +3,8 @@
 require 'spec_helper'
 
 RSpec.describe OffsitePayments::Integrations::Newebpay::Return do
+  subject { result }
+
   let(:query_string) do
     'Status=SUCCESS&' \
     'TradeInfo=979503c01ef9fdc58d64566f1a0a7ca5a5afc8535f65f4144b923985294ad46d2d902b62d22c521586f7c7307' \
@@ -32,16 +34,14 @@ RSpec.describe OffsitePayments::Integrations::Newebpay::Return do
   end
 
   describe '#success?' do
-    subject { result.success? }
-
-    it { is_expected.to be_truthy }
+    it { is_expected.to be_success }
 
     context 'when hash_key invalid' do
       before { config.hash_key = 'B' * 32 }
 
       after { config.hash_key = 'A' * 32 }
 
-      it { is_expected.to be_falsy }
+      it { is_expected.not_to be_success }
     end
   end
 
