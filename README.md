@@ -72,7 +72,7 @@ In your view
 ```erb
 <!-- payment.erb -->
 
-<form action="<%= OffsitePayments.integration('newebpay').service_url %>" method="POST">
+<form action="<%= Newebpay.service_url %>" method="POST">
   <% @helper.form_fields.each do |key, value| %>
     <input type="hidden" name="<%= key %>" value="<%= value %>" />
     <% end %>
