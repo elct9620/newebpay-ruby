@@ -11,3 +11,8 @@ AllCops:
 Metrics/BlockLength:
   Exclude:
     - spec/**/*.rb
+
+Naming/MethodParameterName:
+  AllowedNames:
+    - id
+    - iv

@@ -6,8 +6,19 @@ module Newebpay
   # The module for encrypt and decrypt trade info
   #
   # @since 0.1.0
-  module Cipher
-    module_function
+  class Cipher
+    # @param [String] key
+    # @param [String] iv
+    # @param [String] algorithm
+    #
+    # @return [Newebpay::Cipher]
+    #
+    # @since 0.3.0
+    def initialize(key:, iv:, algorithm: 'aes-256-cbc')
+      @key = key
+      @iv = iv
+      @algorithm = algorithm
+    end
 
     # Encrypt data
     #
@@ -17,10 +28,10 @@ module Newebpay
     #
     # @since 0.1.0
     def encrypt(data)
-      cipher = OpenSSL::Cipher.new('aes-256-cbc').tap do |c|
+      cipher = OpenSSL::Cipher.new(@algorithm).tap do |c|
         c.encrypt
-        c.key = Newebpay::Config.hash_key
-        c.iv = Newebpay::Config.hash_iv
+        c.key = @key
+        c.iv = @iv
       end
 
       (cipher.update(data) + cipher.final).unpack1('H*')
@@ -34,11 +45,11 @@ module Newebpay
     #
     # @since 0.1.0
     def decrypt(data)
-      cipher = OpenSSL::Cipher.new('aes-256-cbc').tap do |c|
+      cipher = OpenSSL::Cipher.new(@algorithm).tap do |c|
         c.decrypt
         c.padding = 0
-        c.key = Newebpay::Config.hash_key
-        c.iv = Newebpay::Config.hash_iv
+        c.key = @key
+        c.iv = @iv
       end
 
       strip_padding(cipher.update([data].pack('H*')) + cipher.final)

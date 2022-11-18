@@ -64,7 +64,9 @@ module OffsitePayments
         #
         # @since 0.1.0
         def trade_info
-          ::Newebpay::Cipher.encrypt(params)
+          ::Newebpay::Cipher
+            .new(key: ::Newebpay::Config.hash_key, iv: ::Newebpay::Config.hash_iv)
+            .encrypt(params)
         end
 
         # The checksum for trade info
