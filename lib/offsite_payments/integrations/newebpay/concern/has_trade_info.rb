@@ -13,8 +13,6 @@ module OffsitePayments
         #
         # @since 0.1.0
         def trade_info
-          cipher = ::Newebpay::Cipher
-                   .new(key: ::Newebpay::Config.hash_key, iv: ::Newebpay::Config.hash_iv)
           @trade_info ||=
             JSON.parse(cipher.decrypt(params['TradeInfo']))
         rescue JSON::ParserError, TypeError

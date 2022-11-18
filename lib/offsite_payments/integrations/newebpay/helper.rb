@@ -7,6 +7,8 @@ module OffsitePayments
       #
       # @since 0.1.0
       class Helper < OffsitePayments::Helper
+        include HasCipher
+
         # @see OffsitePayments::Helper#initialize
         #
         # @since 0.1.0
@@ -64,9 +66,7 @@ module OffsitePayments
         #
         # @since 0.1.0
         def trade_info
-          ::Newebpay::Cipher
-            .new(key: ::Newebpay::Config.hash_key, iv: ::Newebpay::Config.hash_iv)
-            .encrypt(params)
+          cipher.encrypt(params)
         end
 
         # The checksum for trade info

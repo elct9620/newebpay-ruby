@@ -29,10 +29,11 @@ module OffsitePayments
         end
       end
 
-      require 'offsite_payments/integrations/newebpay/concern/has_trade_info'
-      require 'offsite_payments/integrations/newebpay/helper'
-      require 'offsite_payments/integrations/newebpay/return'
-      require 'offsite_payments/integrations/newebpay/notification'
+      require_relative 'newebpay/concern/has_trade_info'
+      require_relative 'newebpay/concern/has_cipher'
+      require_relative 'newebpay/helper'
+      require_relative 'newebpay/return'
+      require_relative 'newebpay/notification'
 
       # Alias to create helper
       #
