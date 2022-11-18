@@ -7,7 +7,7 @@ module OffsitePayments
       #
       # @since 0.1.0
       class Notification < OffsitePayments::Notification
-        include HasCipher
+        include HasKey
         include HasTradeInfo
 
         # @return [String]

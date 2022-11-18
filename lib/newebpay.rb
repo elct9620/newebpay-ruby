@@ -4,7 +4,7 @@ require 'forwardable'
 
 require 'newebpay/version'
 require 'newebpay/config'
-require 'newebpay/cipher'
+require 'newebpay/key'
 
 require 'offsite_payments/integrations/newebpay'
 

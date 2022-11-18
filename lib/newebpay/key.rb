@@ -6,18 +6,16 @@ module Newebpay
   # The module for encrypt and decrypt trade info
   #
   # @since 0.1.0
-  class Cipher
+  class Key
     # @param [String] key
     # @param [String] iv
-    # @param [String] algorithm
     #
     # @return [Newebpay::Cipher]
     #
     # @since 0.3.0
-    def initialize(key:, iv:, algorithm: 'aes-256-cbc')
+    def initialize(key:, iv:)
       @key = key
       @iv = iv
-      @algorithm = algorithm
     end
 
     # Encrypt data
@@ -27,8 +25,8 @@ module Newebpay
     # @return [String] the encrypted data as hex
     #
     # @since 0.1.0
-    def encrypt(data)
-      cipher = OpenSSL::Cipher.new(@algorithm).tap do |c|
+    def encrypt(data, algorithm: 'aes-256-cbc')
+      cipher = OpenSSL::Cipher.new(algorithm).tap do |c|
         c.encrypt
         c.key = @key
         c.iv = @iv
@@ -44,8 +42,8 @@ module Newebpay
     # @return [String] the decrypted data as string
     #
     # @since 0.1.0
-    def decrypt(data)
-      cipher = OpenSSL::Cipher.new(@algorithm).tap do |c|
+    def decrypt(data, algorithm: 'aes-256-cbc')
+      cipher = OpenSSL::Cipher.new(algorithm).tap do |c|
         c.decrypt
         c.padding = 0
         c.key = @key
@@ -53,6 +51,17 @@ module Newebpay
       end
 
       strip_padding(cipher.update([data].pack('H*')) + cipher.final)
+    end
+
+    # Checksum
+    #
+    # @param [String] data
+    #
+    # @return [String] the hashed checksum
+    def checksum(data, algorithm: 'sha256')
+      OpenSSL::Digest
+        .hexdigest(algorithm, "HashKey=#{@key}&#{data}&HashIV=#{@iv}")
+        .upcase
     end
 
     # Remove Padding from NewebPay

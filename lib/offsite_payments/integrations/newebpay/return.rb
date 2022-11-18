@@ -7,7 +7,7 @@ module OffsitePayments
       #
       # @since 0.1.0
       class Return < OffsitePayments::Return
-        include HasCipher
+        include HasKey
         include HasTradeInfo
 
         # Does payment success

@@ -30,7 +30,7 @@ module OffsitePayments
       end
 
       require_relative 'newebpay/concern/has_trade_info'
-      require_relative 'newebpay/concern/has_cipher'
+      require_relative 'newebpay/concern/has_key'
       require_relative 'newebpay/helper'
       require_relative 'newebpay/return'
       require_relative 'newebpay/notification'

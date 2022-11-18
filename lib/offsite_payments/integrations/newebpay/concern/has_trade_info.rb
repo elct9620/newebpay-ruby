@@ -14,7 +14,7 @@ module OffsitePayments
         # @since 0.1.0
         def trade_info
           @trade_info ||=
-            JSON.parse(cipher.decrypt(params['TradeInfo']))
+            JSON.parse(key.decrypt(params['TradeInfo']))
         rescue JSON::ParserError, TypeError
           {}
         end
@@ -25,11 +25,7 @@ module OffsitePayments
         #
         # @since 0.1.0
         def checksum
-          @checksum ||=
-            Digest::SHA256
-            .hexdigest("HashKey=#{::Newebpay::Config.hash_key}&" \
-                       "#{params['TradeInfo']}&HashIV=#{::Newebpay::Config.hash_iv}")
-            .upcase
+          @checksum ||= key.checksum(params['TradeInfo'])
         end
 
         # Does TradeInfo is valid

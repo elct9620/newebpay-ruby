@@ -6,14 +6,14 @@ module OffsitePayments
       # The shared module to get cipher
       #
       # @since 0.1.0
-      module HasCipher
-        # Trade Information from NewebPay
+      module HasKey
+        # The Key for encrypto and hashing
         #
         # @return [Hash]
         #
         # @since 0.1.0
-        def cipher
-          ::Newebpay::Cipher
+        def key
+          ::Newebpay::Key
             .new(key: ::Newebpay::Config.hash_key, iv: ::Newebpay::Config.hash_iv)
         end
       end
