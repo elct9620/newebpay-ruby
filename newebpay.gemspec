@@ -27,4 +27,5 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_runtime_dependency 'offsite_payments', '>= 2.7.26'
+  spec.metadata['rubygems_mfa_required'] = 'true'
 end

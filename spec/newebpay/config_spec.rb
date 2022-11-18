@@ -18,7 +18,7 @@ RSpec.describe Newebpay::Config do
   end
 
   describe '#config' do
-    subject(:when_config) { config.config {} }
+    subject(:when_config) { config.config { nil } }
 
     it 'is expected to call instance_exec' do
       allow(config).to receive(:instance_exec)
