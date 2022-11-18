@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.summary       = 'The offsite payments implemented for NewebPay'
   spec.description   = 'The offsite payments implemented for NewebPay'
   spec.homepage      = 'https://github.com/elct9620/newebpay-ruby'
-  spec.required_ruby_version = Gem::Requirement.new('>= 2.4.0')
+  spec.required_ruby_version = Gem::Requirement.new('>= 2.7.0')
 
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = 'https://github.com/elct9620/newebpay-ruby'

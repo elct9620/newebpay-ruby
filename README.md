@@ -1,7 +1,8 @@
 NewebPay
 ===
 
-[![Build Status](https://travis-ci.com/elct9620/newebpay-ruby.svg?branch=main)](https://travis-ci.com/elct9620/newebpay-ruby) [![Test Coverage](https://api.codeclimate.com/v1/badges/1a88b3fee47e70bb5d26/test_coverage)](https://codeclimate.com/github/elct9620/newebpay-ruby/test_coverage) [![Maintainability](https://api.codeclimate.com/v1/badges/1a88b3fee47e70bb5d26/maintainability)](https://codeclimate.com/github/elct9620/newebpay-ruby/maintainability)
+[[![TEST](https://github.com/elct9620/newebpay-ruby/actions/workflows/test.yml/badge.svg)](https://github.com/elct9620/newebpay-ruby/actions/workflows/test.yml) ![Test Coverage](https://api.codeclimate.com/v1/badges/1a88b3fee47e70bb5d26/test_coverage)](https://codeclimate.com/github/elct9620/newebpay-ruby/test_coverage) [![Maintainability](https://api.codeclimate.com/v1/badges/1a88b3fee47e70bb5d26/maintainability)](https://codeclimate.com/github/elct9620/newebpay-ruby/maintainability)
+
 
 The [Offsite Payments](https://github.com/activemerchant/offsite_payments) implement for NewebPay（藍新金流）
 
